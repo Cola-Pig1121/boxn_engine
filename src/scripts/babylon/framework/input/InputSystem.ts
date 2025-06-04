@@ -97,6 +97,10 @@ export class InputSystem extends Singleton<InputSystem>() {
 
         return action;
     }
+    
+    public registerDialogAction() {
+        this.registerAction("OpenDialog", { key: "t" });
+    }
 
     /**
      * Remap an existing action to a new keyboard key
@@ -169,7 +173,7 @@ export class InputSystem extends Singleton<InputSystem>() {
                 this.activeKeys.delete(key);
                 this.triggerKeyAction(key, kbInfo.type);
             }
-            
+            this.registerDialogAction();
             this.checkKeyCombinations();
         });
 
